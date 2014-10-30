@@ -39,6 +39,8 @@ class TestNginxParser(unittest.TestCase):
         self.assertEqual(parsed, [[['foo'], []]])
         parsed = NginxParser.block.parseString('location /foo{}').asList()
         self.assertEqual(parsed, [[['location', '/foo'], []]])
+        parsed = NginxParser.block.parseString('location ~ /foo{}').asList()
+        self.assertEqual(parsed, [[['location', '~', '/foo'], []]])
         parsed = NginxParser.block.parseString('foo { bar foo; }').asList()
         self.assertEqual(parsed, [[['foo'], [['bar', 'foo']]]])
 

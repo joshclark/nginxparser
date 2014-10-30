@@ -15,7 +15,8 @@ class NginxParser(object):
     space = White().suppress()
     key = Word(alphanums + "_/")
     value = CharsNotIn("{};,")
-    location = CharsNotIn("{};,     ")
+    location_modifier = (Literal("=") ^ Literal("~") ^ Literal("~*") ^ Literal("^~")) + space
+    location = Optional(location_modifier) + CharsNotIn("{};,     ")
 
     # rules
     assignment = (key + Optional(space + value) + semicolon)
