@@ -13,7 +13,7 @@ class NginxParser(object):
     right_bracket = Literal("}").suppress()
     semicolon = Literal(";").suppress()
     space = White().suppress()
-    key = Word(alphanums + "_/.-")
+    key = Word(alphanums + "_/.-+!$%&()*,:<=>?@[\]^`|~")
     value = CharsNotIn("{};,")
     location_modifier = (Literal("=") ^ Literal("~") ^ Literal("~*") ^ Literal("^~")) + space
     location = Optional(location_modifier) + CharsNotIn("{};,     ")

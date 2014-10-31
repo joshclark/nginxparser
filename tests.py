@@ -34,8 +34,8 @@ class TestNginxParser(unittest.TestCase):
                                                     'foo bar;').asList()
         self.assertEqual(parsed, ['root', '/test'], ['foo', 'bar'])
 
-        parsed = NginxParser.assignment.parseString('directive-with_odd.chars-in.it /test;').asList()
-        self.assertEqual(parsed, ['directive-with_odd.chars-in.it', '/test'])
+        parsed = NginxParser.assignment.parseString('directive-with_odd.chars-in+it /test;').asList()
+        self.assertEqual(parsed, ['directive-with_odd.chars-in+it', '/test'])
 
 
     def test_blocks(self):
